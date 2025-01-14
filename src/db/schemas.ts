@@ -1,11 +1,6 @@
 import { sql } from "drizzle-orm";
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
-
-export enum Role {
-  admin = "ADMIN",
-  seller = "SELLER",
-  client = "CLIENT",
-}
+import { Role } from "./enums/role";
 
 export const accounts = sqliteTable("accounts", {
   id: text("id", { length: 36 })
@@ -15,12 +10,11 @@ export const accounts = sqliteTable("accounts", {
     Role.client
   ),
   email: text("email").unique().notNull(),
-  password: text("password").notNull(),
   name: text("name"),
-  address: text("address"),
-  img: text("img"),
   tel: integer("tel"),
-  country: integer("country"),
+  country: integer("country"), // recuerda validar con el enum Country
+  img: text("img"),
+  password: text("password").notNull(),
 
   createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
   updateAt: text("updated_at").$onUpdate(() => sql`(CURRENT_TIMESTAMP)`),

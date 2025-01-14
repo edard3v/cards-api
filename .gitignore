@@ -1,5 +1,5 @@
 src/db/migrations
-src/db/template.db
+src/db/cards.db
 
 # Based on https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore
 

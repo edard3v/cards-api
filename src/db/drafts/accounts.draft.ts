@@ -1,4 +1,4 @@
-import { Role } from "db/schemas";
+import { Role } from "db/enums/role";
 import { Encrypt } from "services/encrypt/encrypt";
 
 export const ACCOUNTS = [

@@ -3,7 +3,7 @@ import { defineConfig } from "drizzle-kit";
 
 export const DB_CREDENTIAL = {
   url: !IS_PRODUCTION
-    ? "file:./src/db/template.db"
+    ? "file:./src/db/cards.db"
     : process.env.TURSO_DATABASE_URL,
   authToken: process.env.TURSO_AUTH_TOKEN,
 };
