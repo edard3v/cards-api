@@ -1,0 +1,39 @@
+{
+  "name": "bun",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run index.ts",
+    "dev": "bun --watch run index.ts",
+    "build": "bun build index.ts --minify --outdir dist --target bun",
+    "db": "bun run generate && bun run migrate",
+    "generate": "sh src/db/generate.sh",
+    "migrate": "sh src/db/migrate.sh",
+    "introspect": "sh src/db/introspect.sh",
+    "studio": "sh src/db/studio.sh",
+    "seed": "bun run src/db/seed.ts"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "5.0.2",
+    "@types/bun": "latest",
+    "@types/jsonwebtoken": "9.0.7",
+    "@types/nodemailer": "6.4.17",
+    "drizzle-kit": "0.30.1"
+  },
+  "peerDependencies": {
+    "typescript": "5.0.0"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "0.4.2",
+    "@libsql/client": "0.14.0",
+    "aws-sdk": "2.1692.0",
+    "bcrypt": "5.1.1",
+    "drizzle-orm": "0.38.3",
+    "hono": "4.6.16",
+    "jsonwebtoken": "9.0.2",
+    "mock-aws-s3": "4.0.2",
+    "nock": "13.5.6",
+    "nodemailer": "6.9.16",
+    "zod": "3.24.1"
+  }
+}

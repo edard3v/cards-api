@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    // Enable latest features
+    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
+
+    // Bundler mode
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    // Best practices
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Some stricter flags (disabled by default)
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false,
+
+    // Rutas
+
+    "baseUrl": "./src",
+    "paths": {
+      "errors": ["./errors"],
+      "services": ["./services"],
+      "zod-schemas": ["./zod-schemas"],
+      "modules": ["./modules"],
+      "middlewares": ["./middlewares"],
+      "db": ["./db"],
+      "app": ["./app"],
+      "regex": ["./regex"],
+      "utils": ["./utils"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "build", "logs", "tmp"]
+}
