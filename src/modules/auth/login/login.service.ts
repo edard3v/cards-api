@@ -3,8 +3,8 @@ import type { LoginDTO } from "./login.dto";
 import { LoginErr } from "errors/Login.err";
 import { Encrypt } from "services/encrypt/encrypt";
 import { JWT } from "services/tokens/jwt";
-import type { Role } from "db/schema";
 import type { JwtPayload } from "jsonwebtoken";
+import type { Role } from "db/enums/role";
 
 export const loginService = async (login: LoginDTO) => {
   const account = await db.query.accounts.findFirst({
