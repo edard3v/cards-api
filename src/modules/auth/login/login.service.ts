@@ -3,7 +3,7 @@ import type { LoginDTO } from "./login.dto";
 import { LoginErr } from "errors/Login.err";
 import { Encrypt } from "services/encrypt/encrypt";
 import { JWT } from "services/tokens/jwt";
-import type { Role } from "db/schemas";
+import type { Role } from "db/schema";
 import type { JwtPayload } from "jsonwebtoken";
 
 export const loginService = async (login: LoginDTO) => {

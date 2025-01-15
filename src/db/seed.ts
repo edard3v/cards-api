@@ -1,6 +1,6 @@
 import { db } from "./db";
 import { ACCOUNTS } from "./drafts/accounts.draft";
-import { accounts } from "./schemas";
+import { accounts } from "./schema";
 
 const seed = async () => {
   await db.delete(accounts).execute();

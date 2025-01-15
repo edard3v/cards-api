@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm/relations";
-import { accounts, cards, categories, packs, packsCards } from "./schemas";
+import { accounts, cards, categories, packs, packsCards } from "./schema";
 
 export const cardsRelations = relations(cards, ({ one, many }) => ({
   account: one(accounts, {

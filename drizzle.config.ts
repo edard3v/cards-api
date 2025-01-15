@@ -9,7 +9,7 @@ export const DB_CREDENTIAL = {
 };
 
 export default defineConfig({
-  schema: "./src/db/schemas.ts",
+  schema: "./src/db/schema.ts",
   out: "./src/db/migrations",
   dialect: "turso",
   dbCredentials: DB_CREDENTIAL,
