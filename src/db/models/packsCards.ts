@@ -16,11 +16,7 @@ export const packsCards = sqliteTable(
     createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
     updateAt: text("updated_at").$onUpdate(() => sql`(CURRENT_TIMESTAMP)`),
   },
-  (packsCards) => {
-    return {
-      id: primaryKey({ columns: [packsCards.packId, packsCards.cardId] }),
-    };
-  }
+  (t) => [primaryKey({ columns: [t.packId, t.cardId] })]
 );
 
 export type InsertPacksCards = typeof packsCards.$inferInsert;
