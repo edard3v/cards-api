@@ -6,6 +6,7 @@ import { startRegisterModule } from "modules/auth/start-register/startRegister.m
 import { endRegisterModule } from "modules/auth/end-register/endRegister.module";
 import { loginModule } from "modules/auth/login/login.module";
 import { refreshLoginModule } from "modules/auth/refresh-login/refreshLogin.module";
+import { getCategoriesModule } from "modules/categories/get-categories/getCategories.module";
 
 export const app = new Hono();
 
@@ -14,6 +15,7 @@ app.route("/start-register", startRegisterModule);
 app.route("/end-register", endRegisterModule);
 app.route("/login", loginModule);
 app.route("/refresh-login", refreshLoginModule);
+app.route("/get-categories", getCategoriesModule);
 
 app.notFound(notFoundHandler);
 app.onError(errHandler);
