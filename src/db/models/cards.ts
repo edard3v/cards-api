@@ -7,7 +7,7 @@ export const cards = sqliteTable("cards", {
   id: text("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  front: text("front").notNull(),
+  front: text("front"),
   back: text("back").notNull(),
   img: text("img"),
   audio: text("audio"),
@@ -20,7 +20,7 @@ export const cards = sqliteTable("cards", {
     .notNull()
     .references(() => categories.id, { onDelete: "restrict" }),
 
-  accountId: text("account_id")
+  authorId: text("author_id")
     .notNull()
     .references(() => accounts.id, { onDelete: "restrict" }),
 });

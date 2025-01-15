@@ -3,7 +3,7 @@ import { accounts, cards, categories, packs, packsCards } from "./schema";
 
 export const cardsRelations = relations(cards, ({ one, many }) => ({
   account: one(accounts, {
-    fields: [cards.accountId],
+    fields: [cards.authorId],
     references: [accounts.id],
   }),
   category: one(categories, {
