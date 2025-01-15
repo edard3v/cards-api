@@ -7,6 +7,7 @@ export const cards = sqliteTable("cards", {
   id: text("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
+  name: text("name").notNull(),
   front: text("front"),
   back: text("back").notNull(),
   img: text("img"),
