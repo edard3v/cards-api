@@ -7,10 +7,10 @@
     "dev": "bun --watch run index.ts",
     "build": "bun build index.ts --minify --outdir dist --target bun",
     "db": "bun run generate && bun run migrate",
-    "generate": "sh src/db/generate.sh",
-    "migrate": "sh src/db/migrate.sh",
-    "introspect": "sh src/db/introspect.sh",
-    "studio": "sh src/db/studio.sh",
+    "generate": "sh src/db/sh/generate.sh",
+    "migrate": "sh src/db/sh/migrate.sh",
+    "introspect": "sh src/db/sh/introspect.sh",
+    "studio": "sh src/db/sh/studio.sh",
     "seed": "bun run src/db/seed.ts"
   },
   "devDependencies": {
