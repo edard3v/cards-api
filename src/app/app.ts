@@ -9,6 +9,7 @@ import { refreshLoginModule } from "modules/auth/refresh-login/refreshLogin.modu
 import { getCategoriesModule } from "modules/categories/get-categories/getCategories.module";
 import { getCardsModule } from "modules/cards/get-cards/getCards.module";
 import { addCardModule } from "modules/cards/add-cards/addCards.module";
+import { addPackModule } from "modules/packs/add-pack/addPack.module";
 
 export const app = new Hono();
 
@@ -20,6 +21,7 @@ app.route("/refresh-login", refreshLoginModule);
 app.route("/get-categories", getCategoriesModule);
 app.route("/get-cards", getCardsModule);
 app.route("/add-card", addCardModule);
+app.route("/add-pack", addPackModule);
 
 app.notFound(notFoundHandler);
 app.onError(errHandler);
