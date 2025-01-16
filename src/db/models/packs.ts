@@ -13,7 +13,7 @@ export const packs = sqliteTable("packs", {
   createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
   updateAt: text("updated_at").$onUpdate(() => sql`(CURRENT_TIMESTAMP)`),
 
-  accountId: text("account_id")
+  authorId: text("author_id")
     .notNull()
     .references(() => accounts.id, { onDelete: "restrict" }),
   categoryId: text("category_id")
