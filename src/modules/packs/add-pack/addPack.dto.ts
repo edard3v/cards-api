@@ -1,9 +1,10 @@
 import { uuidZod } from "utils/zod/uuid.zod";
 import { z } from "zod";
+import { nameZod } from "../zod/name.zod";
 
 export const addPackDTO = z
   .object({
-    name: z.string().min(1).max(150),
+    name: nameZod,
     categoryId: uuidZod,
   })
   .strict();

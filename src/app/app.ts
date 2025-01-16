@@ -10,6 +10,7 @@ import { getCategoriesModule } from "modules/categories/get-categories/getCatego
 import { getCardsModule } from "modules/cards/get-cards/getCards.module";
 import { addCardModule } from "modules/cards/add-cards/addCards.module";
 import { addPackModule } from "modules/packs/add-pack/addPack.module";
+import { getPacksModule } from "modules/packs/get-packs/getPacks.module";
 
 export const app = new Hono();
 
@@ -22,6 +23,7 @@ app.route("/get-categories", getCategoriesModule);
 app.route("/get-cards", getCardsModule);
 app.route("/add-card", addCardModule);
 app.route("/add-pack", addPackModule);
+app.route("/get-packs", getPacksModule);
 
 app.notFound(notFoundHandler);
 app.onError(errHandler);
