@@ -5,13 +5,12 @@ import { CATEGORIES } from "./drafts/categories.draft";
 import { accounts, cards, categories } from "./schema";
 
 const seed = async () => {
-  await db.delete(accounts).execute();
-  await db.insert(accounts).values(ACCOUNTS);
-
-  await db.delete(categories).execute();
-  await db.insert(categories).values(CATEGORIES);
-
   await db.delete(cards).execute();
+  await db.delete(categories).execute();
+  await db.delete(accounts).execute();
+
+  await db.insert(accounts).values(ACCOUNTS);
+  await db.insert(categories).values(CATEGORIES);
   await db.insert(cards).values(CARDS);
 };
 
