@@ -1,5 +1,4 @@
-import { imgZod } from "utils/zod/img.zod";
-import { urlZod } from "utils/zod/url.zod";
+import { fileZod } from "utils/zod/file.zod";
 import { uuidZod } from "utils/zod/uuid.zod";
 import { z } from "zod";
 
@@ -8,9 +7,9 @@ export const addCardDTO = z
     name: z.string().min(1).max(150),
     front: z.string().optional(),
     back: z.string(),
-    img: imgZod.optional(),
-    audio: urlZod.optional(),
     categoryId: uuidZod,
+    img: fileZod.optional(),
+    audio: fileZod.optional(),
   })
   .strict();
 
