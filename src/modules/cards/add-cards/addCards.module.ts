@@ -3,7 +3,7 @@ import { Hono } from "hono";
 import { verifyAuth } from "middlewares/verifyAuth.middleware";
 import { addCardDTO } from "./addCard.dto";
 import { Cloudinary } from "services/cloudinary/cloudinary";
-import { CloudinaryErr } from "errors/Cloudinary.err";
+import { addCardService } from "./addCard.service";
 
 export const addCardModule = new Hono();
 
@@ -17,40 +17,35 @@ addCardModule.post(
   // Controller
   async (context) => {
     const { img, audio, ...rest } = context.req.valid("form");
-    let imgUrl;
-    let audioUrl;
-    const folderForImgs = "cards/imgs";
-    const folderForAudios = "cards/audios";
+    const imgCloud = { url: "", folder: "cards/imgs" };
+    const audioCloud = { url: "", folder: "cards/audios" };
 
     try {
-      if (img) {
-        try {
-          const result = await Cloudinary.upload(img, folderForImgs);
-          imgUrl = result.url;
-        } catch (error) {
-          throw new CloudinaryErr();
-        }
-      }
+      await Promise.all([
+        img && upload(img, imgCloud.folder, imgCloud),
+        audio && upload(audio, audioCloud.folder, audioCloud),
+      ]);
 
-      if (audio) {
-        try {
-          const result = await Cloudinary.upload(audio, folderForAudios);
-          audioUrl = result.url;
-        } catch (error) {
-          throw new CloudinaryErr();
-        }
-      }
+      const authorId = context.get("tokenPayload").id as UUID;
 
-      console.log({ ...rest, img: imgUrl, audio: audioUrl });
+      await addCardService({
+        authorId,
+        img: imgCloud.url,
+        audio: audioCloud.url,
+        ...rest,
+      });
 
-      // const authorId = context.get("tokenPayload").id as UUID;
-      // await addCardService({ ...body, authorId });
       return context.json({ msg: "Carta agregada correctamente 😁." });
     } catch (error) {
-      if (imgUrl) Cloudinary.destroy(imgUrl, folderForImgs);
-      if (audioUrl) Cloudinary.destroy(audioUrl, folderForAudios);
+      if (imgCloud.url) Cloudinary.destroy(imgCloud.url, imgCloud.folder);
+      if (audioCloud.url) Cloudinary.destroy(audioCloud.url, audioCloud.folder);
 
       throw error;
     }
   }
 );
+
+const upload = async (file: File, folder: string, save: { url: string }) => {
+  const result = await Cloudinary.upload(file, folder);
+  save.url = result.url;
+};
