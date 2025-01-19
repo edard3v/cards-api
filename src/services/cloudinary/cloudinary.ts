@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
-import type { CloudinaryFile } from "./types";
+import type { ResCloudinary } from "./types";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -28,7 +28,7 @@ export class Cloudinary {
       stream.end(Buffer.from(arrayBuffer));
     });
 
-    return uploadResult as CloudinaryFile;
+    return uploadResult as ResCloudinary;
   }
 
   static async destroy(url: string, folder: string) {

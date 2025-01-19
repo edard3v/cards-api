@@ -1,4 +1,4 @@
-export interface CloudinaryFile {
+export interface ResCloudinary {
   asset_id: string;
   public_id: string;
   version: number;
