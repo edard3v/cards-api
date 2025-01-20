@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { welcomeModule } from "modules/welcome/welcome.module";
 import { notFoundHandler } from "./notFound.handler";
 import { errHandler } from "./err.handler";
@@ -13,6 +14,15 @@ import { addPackModule } from "modules/packs/add-pack/addPack.module";
 import { getPacksModule } from "modules/packs/get-packs/getPacks.module";
 
 export const app = new Hono();
+app.use(
+  "/*",
+  cors({
+    origin: ["http://localhost:5173"],
+    allowMethods: ["POST", "GET", "UPDATE", "DELETE"],
+    maxAge: 600,
+    credentials: true,
+  })
+);
 
 app.route("/", welcomeModule);
 app.route("/start-register", startRegisterModule);
